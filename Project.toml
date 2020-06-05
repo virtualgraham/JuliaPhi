@@ -1,0 +1,7 @@
+name = "JuliaPhi"
+uuid = "d0131343-5a63-4cde-a03b-f049219797b1"
+author = ["Graham Shapiro <virtualgraham@gmail.com"]
+version = "0.1.0"
+
+[deps]
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
