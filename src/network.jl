@@ -1,4 +1,4 @@
-using JSON
+import JSON
 
 mutable struct Network
     tpm::AbstractArray{Float64}
