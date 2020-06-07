@@ -87,18 +87,6 @@ function block_reducible(cm, nodes1, nodes2)
     return false
 end
 
-# function _connected(cm, nodes::AbstractArray{<:Integer, 1}, connection)
-#     if nodes !== nothing
-#         cm = cm[nodes, nodes]
-#     end
-
-#     num_components = if connection 
-#             length(LightGraphs.strongly_connected_components())
-#         else
-#             length(LightGraphs.weakly_connected_components())
-#         end
-#     return num_components < 2
-# end
 
 function is_strong(cm, nodes=nothing)
     if nodes !== nothing

@@ -1,0 +1,1 @@
+approxeq(x, y) = abs(x - y) <= EPSILON
