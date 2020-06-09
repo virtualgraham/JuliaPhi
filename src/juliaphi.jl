@@ -1,13 +1,32 @@
 module JuliaPhi
 
+############
+# Utils
+############
 include("utils.jl")
+include("config.jl")
 
+############
+# Models
+############
+include("models/cmp.jl")
+include("models/cuts.jl")
+include("models/actual_causation.jl")
+include("models/mechanism.jl")
+include("models/subsystem.jl")
+
+############
+# 
+############
 include("connectivity.jl")
 include("convert.jl")
 include("cache.jl")
 include("labels.jl")
 include("validate.jl")
 
+############
+# 
+############
 include("network.jl")
 
 const EPSILON = nothing
