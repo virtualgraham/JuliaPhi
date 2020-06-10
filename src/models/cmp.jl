@@ -1,3 +1,5 @@
+import Base.:(==)
+
 abstract type Orderable end
 
 function Base.:(<)(a::Orderable, b::Orderable) 
@@ -35,7 +37,7 @@ function general_eq(a, b, attributes)
             elseif (_a...) != (_b...)
                 return false
             end
-        else if a != b
+        elseif a != b
             return false
         end
     end

@@ -24,14 +24,14 @@ greater_than_zero(alpha) = alpha > 0 && !approxeq(alpha, 0)
 
 
 mutable struct AcRepertoireIrreducibilityAnalysis <: Orderable
-    alpha,
-    state,
-    direction,
-    mechanism,
-    purview,
-    partition,
-    probability,
-    partitioned_probability,
+    alpha
+    state
+    direction
+    mechanism
+    purview
+    partition
+    probability
+    partitioned_probability
     node_labels
 
     function AcRepertoireIrreducibilityAnalysis(

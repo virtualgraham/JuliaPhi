@@ -1,4 +1,5 @@
 import JSON
+import Base.:(==)
 
 mutable struct Network
     tpm::AbstractArray{Float64}

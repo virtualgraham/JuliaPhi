@@ -1,3 +1,5 @@
+import Base.:(==)
+
 function configure_joblib()
 
 end
@@ -66,7 +68,7 @@ struct Configuration
 
         options[:CACHING_BACKEND] = Option{String}("fs")
 
-        options[:FS_CACHE_VERBOSITY] = Option{String}(0;
+        options[:FS_CACHE_VERBOSITY] = Option{Integer}(0;
             on_change=configure_joblib
         )
 
