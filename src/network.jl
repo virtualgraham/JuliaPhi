@@ -34,7 +34,7 @@ end
 
 
 function build_tpm(tpm::AbstractArray{Float64})
-    validate_tpm(tpm)
+    validate_tpm(tpm, configuration.VALIDATE_CONDITIONAL_INDEPENDENCE)
 
     if is_state_by_state(tpm) 
         tpm = state_by_state2state_by_node(tpm)

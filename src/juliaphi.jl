@@ -5,7 +5,11 @@ module JuliaPhi
 # Utils
 ############
 include("utils.jl")
+
+
+
 include("config.jl")
+
 
 ############
 # Models
@@ -20,6 +24,7 @@ include("models/subsystem.jl")
 # 
 ############
 include("direction.jl")
+include("tpm.jl")
 include("connectivity.jl")
 include("convert.jl")
 include("cache.jl")
@@ -45,12 +50,26 @@ const ON = (1,)
 
 
 
-export apply_boundary_conditions_to_cm, get_inputs_from_cm, get_outputs_from_cm,
+export 
+
+# connectivity.jl
+apply_boundary_conditions_to_cm, get_inputs_from_cm, get_outputs_from_cm,
 causally_significant_nodes, relevant_connections, block_cm, block_reducible, is_strong, 
 is_weak, is_full,
 
+# utils.jl
 approxeq,
 
-Direction, order
+# direction.jl
+Direction, order,
+
+# validate.jl
+validate_direction, validate_tpm,
+
+# tpm.jl"
+is_state_by_state,
+
+# convert.jl
+to_2dimensional, le_index2state, be_index2state, state2le_index
 
 end # module
