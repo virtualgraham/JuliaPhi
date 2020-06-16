@@ -70,6 +70,6 @@ validate_direction, validate_tpm,
 is_state_by_state,
 
 # convert.jl
-to_2dimensional, le_index2state, be_index2state, state2le_index
+to_2dimensional, le_index2state, be_index2state, state2le_index, to_multidimensional
 
 end # module

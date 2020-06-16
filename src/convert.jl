@@ -22,7 +22,9 @@ end
 
 
 function to_multidimensional(tpm::AbstractArray)
-    # TODO: implement
+    Np = Integer(floor(log2(prod(size(tpm)[1:end-1]))))
+    Nn = last(size(tpm))
+    reshape(tpm, push!(repeat([2], Np), Nn)...)
 end
 
 
