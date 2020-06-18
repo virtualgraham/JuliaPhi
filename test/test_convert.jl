@@ -154,22 +154,57 @@
             N = Integer(floor(log2(S)))
             result = to_multidimensional(tpm)
             for i in 1:S
-                state = le_index2state(i, N)
-                @test result[state] == tpm[i]
+                state = le_index2state(i-1, N) .+ 1
+                @test result[state...,:] == tpm[i, :]
             end
         end
     end
 
     @testset "test_to_2dimensional" begin
+        @test to_2dimensional(state_by_node) == state_by_node
 
+        for tpm in [
+            state_by_node,
+            state_by_node_nondet,
+            twod_state_by_node,
+            nonsquare_deterministic_1,
+            nonsquare_deterministic_2,
+            nonsquare_nondeterministic_1,
+            nonsquare_nondeterministic_2,
+        ]
+            nd = to_multidimensional(tpm)
+            @test to_2dimensional(nd) == tpm
+        end
     end
 
     @testset "test_state_by_state2state_by_node" begin
+        result = state_by_state2state_by_node(state_by_state)
+        expected = to_multidimensional(state_by_node)
+        @test result == expected
+    end
 
+    @testset "test_state_by_node2state_by_state" begin
+        sbn_tpm = [
+            0 0
+            1 0
+            0 1
+            1 1
+        ]
+        expected = [
+            1 0 0 0
+            0 1 0 0
+            0 0 1 0
+            0 0 0 1
+        ]
+
+        result = state_by_node2state_by_state(sbn_tpm)
+        @test result == expected
     end
 
     @testset "test_nondet_state_by_node2state_by_state" begin
-
+        result = state_by_node2state_by_state(state_by_node_nondet)
+        expected = state_by_state_nondet
+        @test result == expected
     end
 
     @testset "test_nondet_state_by_state2state_by_node" begin
