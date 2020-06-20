@@ -7,9 +7,9 @@ function state_by_state2state_by_node(tpm::AbstractArray)
     states = Dict(i => le_index2state(i-1, N) .+ 1 for i in 1:S)
 
     node_on = [[states[i][n] - 1 for i in 1:S] for n in 1:N]
-    on_probabilities = [tpm * node_on[n] for n in 1:N]
+    on_probabilities = [tpm .* node_on[n]' for n in 1:N]
     for (i, state) in states
-        sbn_tpm[state..., :] = [sum(on_probabilities[n][i]) for n in 1:N]
+        sbn_tpm[state..., :] = [sum(on_probabilities[n][i,:]) for n in 1:N]
     end
 
     return sbn_tpm

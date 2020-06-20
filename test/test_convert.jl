@@ -208,7 +208,9 @@
     end
 
     @testset "test_nondet_state_by_state2state_by_node" begin
-
+        result = state_by_state2state_by_node(state_by_state_nondet)
+        expected = to_multidimensional(state_by_node_nondet)
+        @test result == expected
     end
 
     @testset "test_2_d_state_by_node2state_by_state" begin
