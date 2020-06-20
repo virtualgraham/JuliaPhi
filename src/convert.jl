@@ -71,11 +71,11 @@ end
 
 
 function _nondeterministic_sbn2sbs(Nn, Sn, sbn_tpm)
-    unfolded = reshape(collect(Iterators.flatten([_unfold_nodewise_probabilities(Nn, Sn, row)' for row in eachrow(sbn_tpm)])), Nn, Sn, Sn)
-    m = prod(unfolded; dims=1)
-    m = reverse(m; dims=2)
-    m = reshape(m, Sn, Sn)
-    return m'
+    unfolded = reshape(collect(Iterators.flatten([_unfold_nodewise_probabilities(Nn, Sn, row) for row in eachrow(sbn_tpm)])), Sn, Nn, size(sbn_tpm)[1])
+    unfolded = permutedims(unfolded, [3,1,2])
+    m = prod(unfolded; dims=3)
+    m = dropdims(m; dims=3)
+    return reverse(m; dims=2)
 end
 
 

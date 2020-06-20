@@ -214,27 +214,68 @@
     end
 
     @testset "test_2_d_state_by_node2state_by_state" begin
-
+        result = state_by_node2state_by_state(state_by_node)
+        expected = state_by_state
+        @test result == expected
     end
 
     @testset "test_n_d_state_by_node2state_by_state" begin
-
+        sbn = to_multidimensional(state_by_node)
+        result = state_by_node2state_by_state(sbn)
+        expected = state_by_state
+        @test result == expected
     end
 
     @testset "test_nonsquare_deterministic_1_state_by_node2state_by_state" begin
-
+        result = state_by_node2state_by_state(nonsquare_deterministic_1)
+        answer = [
+            0 1 0 0 0 0 0 0
+            0 0 0 0 0 0 1 0
+            0 0 0 1 0 0 0 0
+            0 0 0 0 1 0 0 0
+        ]
+        @test result == answer
     end
 
     @testset "test_nonsquare_deterministic_2_state_by_node2state_by_state" begin
-
+        result = state_by_node2state_by_state(nonsquare_deterministic_2)
+        answer = [
+            1 0 0 0
+            0 0 1 0
+            0 1 0 0
+            0 0 0 1
+            1 0 0 0
+            0 0 1 0
+            0 0 0 1
+            0 1 0 0
+        ]
+        @test result == answer
     end
 
     @testset "test_nonsquare_nondeterministic_1_state_by_node2state_by_state" begin
-
+        result = round.(state_by_node2state_by_state(nonsquare_nondeterministic_1); digits=3)
+        answer = [
+            0.126 0.504 0.014 0.056 0.054 0.216 0.006 0.024
+            0.035 0.315 0.035 0.315 0.015 0.135 0.015 0.135
+            0.016 0.004 0.064 0.016 0.144 0.036 0.576 0.144
+            0.378 0.162 0.252 0.108 0.042 0.018 0.028 0.012
+        ]
+        @test result == answer
     end
 
     @testset "test_nonsquare_nondeterministic_2_state_by_node2state_by_state" begin
-
+        result = round.(state_by_node2state_by_state(nonsquare_nondeterministic_2); digits=3)
+        answer = [
+            1.   0.   0.   0.  
+            0.09 0.81 0.01 0.09
+            0.14 0.06 0.56 0.24
+            0.63 0.27 0.07 0.03
+            0.28 0.42 0.12 0.18
+            0.2  0.2  0.3  0.3 
+            0.08 0.72 0.02 0.18
+            0.18 0.72 0.02 0.08
+        ]
+        @test result == answer
     end
 
 end
